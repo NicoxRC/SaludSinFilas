@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
+import PatientLayout from '../components/PatientLayout'
 import PatientDashboard from '../pages/patient/Dashboard'
 import AdminDashboard from '../pages/admin/Dashboard'
 import Medicamentos from '../pages/patient/Medicamentos'
@@ -29,10 +30,15 @@ function AppRouter() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/patient/dashboard" element={<PatientDashboard />} />
-      <Route path="/patient/medicamentos" element={<Medicamentos />} />
-      <Route path="/patient/turnos" element={<Turnos />} />
-      <Route path="/patient/mis-turnos" element={<MisTurnos />} />
+
+      {/* Rutas de paciente con layout propio */}
+      <Route element={<PatientLayout />}>
+        <Route path="/patient/dashboard" element={<PatientDashboard />} />
+        <Route path="/patient/medicamentos" element={<Medicamentos />} />
+        <Route path="/patient/turnos" element={<Turnos />} />
+        <Route path="/patient/mis-turnos" element={<MisTurnos />} />
+      </Route>
+
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

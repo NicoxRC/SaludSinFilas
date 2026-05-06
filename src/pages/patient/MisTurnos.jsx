@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Layout from '../../components/Layout'
 import Button from '../../components/Button'
 import { useAuth } from '../../context/AuthContext'
 import { useTurnos } from '../../context/TurnosContext'
@@ -90,7 +89,7 @@ function MisTurnos() {
   }
 
   return (
-    <Layout>
+    <div className="p-6 md:p-8">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-6 flex items-center justify-between gap-4">
@@ -134,7 +133,7 @@ function MisTurnos() {
           </div>
         )}
       </div>
-    </Layout>
+    </div>
   )
 }
 

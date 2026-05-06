@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react'
-import Layout from '../../components/Layout'
 import InputField from '../../components/InputField'
 import Spinner from '../../components/Spinner'
 import MedicamentoCard from '../../components/MedicamentoCard'
@@ -41,7 +40,7 @@ function Medicamentos() {
   }, [busqueda, farmaciaFiltro, disponibilidadFiltro])
 
   return (
-    <Layout>
+    <div className="p-6 md:p-8">
       {/* Page header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-textPrimary">Consulta de Medicamentos</h1>
@@ -148,7 +147,7 @@ function Medicamentos() {
           )}
         </>
       )}
-    </Layout>
+    </div>
   )
 }
 

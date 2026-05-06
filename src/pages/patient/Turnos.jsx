@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import Layout from '../../components/Layout'
 import Button from '../../components/Button'
 import { useAuth } from '../../context/AuthContext'
 import { useTurnos } from '../../context/TurnosContext'
@@ -212,7 +211,7 @@ function Turnos() {
   }
 
   return (
-    <Layout>
+    <div className="p-6 md:p-8">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-textPrimary">Agendar Turno</h1>
@@ -400,7 +399,7 @@ function Turnos() {
         onVerTurnos={() => navigate('/patient/mis-turnos')}
         onVolver={() => navigate('/patient/dashboard')}
       />
-    </Layout>
+    </div>
   )
 }
 
