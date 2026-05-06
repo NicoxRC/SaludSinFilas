@@ -1,1 +1,0 @@
-- [SaludSinFilas stack y estructura](project_saludsinflas_stack.md) — Stack, estructura de carpetas y paleta de colores del proyecto
