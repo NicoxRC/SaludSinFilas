@@ -3,6 +3,7 @@ import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
 import PatientDashboard from '../pages/patient/Dashboard'
 import AdminDashboard from '../pages/admin/Dashboard'
+import Medicamentos from '../pages/patient/Medicamentos'
 
 function NotFound() {
   const navigate = useNavigate()
@@ -27,6 +28,7 @@ function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/patient/dashboard" element={<PatientDashboard />} />
+      <Route path="/patient/medicamentos" element={<Medicamentos />} />
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
