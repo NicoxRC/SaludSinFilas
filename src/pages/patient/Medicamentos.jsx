@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import InputField from '../../components/InputField'
 import Spinner from '../../components/Spinner'
 import MedicamentoCard from '../../components/MedicamentoCard'
-import medicamentosData from '../../data/medicamentos'
+import { useMedicamentos } from '../../context/MedicamentosContext'
 
 const FARMACIAS = [
   'EPS Emssanar - Centro',
@@ -17,6 +17,7 @@ const DISPONIBILIDAD = [
 ]
 
 function Medicamentos() {
+  const { medicamentos: medicamentosData } = useMedicamentos()
   const [loading, setLoading] = useState(true)
   const [busqueda, setBusqueda] = useState('')
   const [farmaciaFiltro, setFarmaciaFiltro] = useState('')
@@ -37,7 +38,7 @@ function Medicamentos() {
         (disponibilidadFiltro === 'no_disponible' && !med.disponible)
       return coincideNombre && coincideFarmacia && coincideDisponibilidad
     })
-  }, [busqueda, farmaciaFiltro, disponibilidadFiltro])
+  }, [medicamentosData, busqueda, farmaciaFiltro, disponibilidadFiltro])
 
   return (
     <div className="p-6 md:p-8">
