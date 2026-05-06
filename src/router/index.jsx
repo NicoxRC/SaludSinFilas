@@ -10,6 +10,7 @@ import Medicamentos from '../pages/patient/Medicamentos'
 import Turnos from '../pages/patient/Turnos'
 import MisTurnos from '../pages/patient/MisTurnos'
 import TurnosAdmin from '../pages/admin/TurnosAdmin'
+import Reportes from '../pages/admin/Reportes'
 
 function NotFound() {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ function AppRouter() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/inventario" element={<Inventario />} />
         <Route path="/admin/turnos" element={<TurnosAdmin />} />
-        <Route path="/admin/reportes" element={<div className="p-8">Reportes - Próximamente</div>} />
+        <Route path="/admin/reportes" element={<Reportes />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
