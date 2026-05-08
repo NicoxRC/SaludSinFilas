@@ -133,7 +133,7 @@ function ModalExito({ turnoCreado, onVerTurnos, onVolver }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 flex flex-col items-center gap-4 animate-fade-in">
+      <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 flex flex-col items-center gap-4 modal-enter">
         <CheckIcon />
         <h2 className="text-xl font-bold text-textPrimary text-center">
           ¡Turno agendado exitosamente!
@@ -211,7 +211,7 @@ function Turnos() {
   }
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-6 md:p-8 fade-in">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-textPrimary">Agendar Turno</h1>

@@ -134,7 +134,7 @@ export default function Reportes() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6 space-y-8">
+    <div className="min-h-screen bg-background p-6 space-y-8 fade-in">
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import usuarios from '../../data/usuarios'
+import { useAuth } from '../../context/AuthContext'
 import FormCard from '../../components/FormCard'
 import InputField from '../../components/InputField'
 import Button from '../../components/Button'
@@ -19,6 +20,17 @@ const AFILIACIONES_TOMADAS = usuarios
 
 function Register() {
   const navigate = useNavigate()
+  const { usuario } = useAuth()
+
+  useEffect(() => {
+    if (usuario) {
+      if (usuario.rol === 'admin') {
+        navigate('/admin/dashboard', { replace: true })
+      } else {
+        navigate('/patient/dashboard', { replace: true })
+      }
+    }
+  }, [usuario, navigate])
 
   const [form, setForm] = useState({
     nombre: '',
@@ -96,7 +108,7 @@ function Register() {
 
       <FormCard title="Crear cuenta">
         {exito ? (
-          <div className="bg-secondary/10 border border-secondary text-secondary rounded-lg px-4 py-3 text-sm text-center font-medium">
+          <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-3 text-sm text-center font-medium">
             ¡Registro exitoso! Redirigiendo al login...
           </div>
         ) : (

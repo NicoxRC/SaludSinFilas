@@ -30,7 +30,7 @@ function ModalEdicion({ medicamento, onClose, onGuardar }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md animate-fade-in">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md modal-enter">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <h2 className="text-base font-semibold text-textPrimary">Editar medicamento</h2>
@@ -138,7 +138,7 @@ function ModalCreacion({ onClose, onAgregar }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md animate-fade-in">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md modal-enter">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <h2 className="text-base font-semibold text-textPrimary">Agregar medicamento</h2>
@@ -240,7 +240,7 @@ function Inventario() {
   }
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-6 md:p-8 fade-in">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>

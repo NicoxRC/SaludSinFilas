@@ -89,7 +89,7 @@ function MisTurnos() {
   }
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-6 md:p-8 fade-in">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-6 flex items-center justify-between gap-4">

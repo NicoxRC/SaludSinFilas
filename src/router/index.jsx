@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
 import PatientLayout from '../components/PatientLayout'
@@ -11,22 +11,9 @@ import Turnos from '../pages/patient/Turnos'
 import MisTurnos from '../pages/patient/MisTurnos'
 import TurnosAdmin from '../pages/admin/TurnosAdmin'
 import Reportes from '../pages/admin/Reportes'
-
-function NotFound() {
-  const navigate = useNavigate()
-  return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-4">
-      <h1 className="text-4xl font-bold text-textPrimary">404</h1>
-      <p className="text-gray-500">Página no encontrada.</p>
-      <button
-        onClick={() => navigate('/')}
-        className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-600 transition-colors"
-      >
-        Volver al inicio
-      </button>
-    </div>
-  )
-}
+import NotFound from '../pages/NotFound'
+import ProtectedRoute from './ProtectedRoute'
+import RoleRoute from './RoleRoute'
 
 function AppRouter() {
   return (
@@ -35,20 +22,27 @@ function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      {/* Rutas de paciente con layout propio */}
-      <Route element={<PatientLayout />}>
-        <Route path="/patient/dashboard" element={<PatientDashboard />} />
-        <Route path="/patient/medicamentos" element={<Medicamentos />} />
-        <Route path="/patient/turnos" element={<Turnos />} />
-        <Route path="/patient/mis-turnos" element={<MisTurnos />} />
-      </Route>
+      {/* Rutas protegidas */}
+      <Route element={<ProtectedRoute />}>
+        {/* Rutas de paciente */}
+        <Route element={<RoleRoute rolRequerido="paciente" />}>
+          <Route element={<PatientLayout />}>
+            <Route path="/patient/dashboard" element={<PatientDashboard />} />
+            <Route path="/patient/medicamentos" element={<Medicamentos />} />
+            <Route path="/patient/turnos" element={<Turnos />} />
+            <Route path="/patient/mis-turnos" element={<MisTurnos />} />
+          </Route>
+        </Route>
 
-      {/* Rutas de admin con layout propio */}
-      <Route element={<AdminLayout />}>
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/inventario" element={<Inventario />} />
-        <Route path="/admin/turnos" element={<TurnosAdmin />} />
-        <Route path="/admin/reportes" element={<Reportes />} />
+        {/* Rutas de admin */}
+        <Route element={<RoleRoute rolRequerido="admin" />}>
+          <Route element={<AdminLayout />}>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/inventario" element={<Inventario />} />
+            <Route path="/admin/turnos" element={<TurnosAdmin />} />
+            <Route path="/admin/reportes" element={<Reportes />} />
+          </Route>
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFound />} />

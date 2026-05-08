@@ -161,7 +161,7 @@ export default function TurnosAdmin() {
   const mostrarFarmacia = filtroFarmacia === ''
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-6 fade-in">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <h1 className="text-2xl font-bold text-textPrimary">Gestion de Turnos</h1>

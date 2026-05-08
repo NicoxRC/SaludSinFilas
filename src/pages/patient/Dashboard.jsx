@@ -58,7 +58,7 @@ function Dashboard() {
   const favoritosMeds = medicamentos.filter((m) => FAVORITOS_IDS.includes(m.id))
 
   return (
-    <div className="p-6 md:p-8 space-y-8">
+    <div className="p-6 md:p-8 space-y-8 fade-in">
       {/* Saludo */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-textPrimary">

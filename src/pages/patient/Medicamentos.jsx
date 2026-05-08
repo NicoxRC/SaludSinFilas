@@ -41,7 +41,7 @@ function Medicamentos() {
   }, [medicamentosData, busqueda, farmaciaFiltro, disponibilidadFiltro])
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-6 md:p-8 fade-in">
       {/* Page header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-textPrimary">Consulta de Medicamentos</h1>

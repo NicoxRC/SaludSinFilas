@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import FormCard from '../../components/FormCard'
@@ -9,8 +9,18 @@ const MAX_INTENTOS = 3
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function Login() {
-  const { login } = useAuth()
+  const { login, usuario } = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (usuario) {
+      if (usuario.rol === 'admin') {
+        navigate('/admin/dashboard', { replace: true })
+      } else {
+        navigate('/patient/dashboard', { replace: true })
+      }
+    }
+  }, [usuario, navigate])
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -102,16 +112,16 @@ function Login() {
             disabled={bloqueado}
           />
 
-          {intentosFallidos > 0 && (
-            <p className="text-sm text-orange-500 text-center">
+          {intentosFallidos > 0 && !errorGeneral && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm text-center">
               Intentos fallidos: {intentosFallidos}/{MAX_INTENTOS}
-            </p>
+            </div>
           )}
 
           {errorGeneral && (
-            <p className={`text-sm text-center ${bloqueado ? 'text-red-600 font-medium' : 'text-red-500'}`}>
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm text-center font-medium">
               {errorGeneral}
-            </p>
+            </div>
           )}
 
           <Button type="submit" variant="primary" fullWidth disabled={bloqueado}>
